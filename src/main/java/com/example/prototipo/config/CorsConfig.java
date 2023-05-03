@@ -20,13 +20,7 @@ public class CorsConfig {
       public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
           http.csrf()
               .disable()              
-            //   .authorizeHttpRequests((authorize) -> authorize
-            //       .requestMatchers("/admin/**").hasRole("ADMIN")
-            //       .requestMatchers("/api/**").anonymous()
-            //       .requestMatchers("/login*").permitAll()           
-            //       .anyRequest().permitAll()                                   
-            //       .and()
-            //   );      
+     
               .authorizeHttpRequests((authorize)-> authorize
                   .requestMatchers("/admin/**").hasRole("ADMIN")
                   .requestMatchers("/api/**").permitAll()
@@ -37,12 +31,7 @@ public class CorsConfig {
               http.cors();
               return http.build();
       }
-      // @Autowired
-      // public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-      //   auth
-      //     .inMemoryAuthentication()
-      //       .withUser("user").password("password").roles("USER");
-      // }
+
 
       @Value("${allowed.origin}")
       private String allowedOrigin;
